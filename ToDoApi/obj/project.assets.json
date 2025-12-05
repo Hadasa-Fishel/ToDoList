@@ -2554,11 +2554,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Downloads\\ToDo List\\ToDoApi\\ToDoApi.csproj",
+      "projectUniqueName": "C:\\Users\\user1\\Desktop\\תכנות תשפה\\פרקטיקוד\\ToDoList\\ToDoApi\\ToDoApi.csproj",
       "projectName": "ToDoApi",
-      "projectPath": "C:\\Users\\user1\\Downloads\\ToDo List\\ToDoApi\\ToDoApi.csproj",
+      "projectPath": "C:\\Users\\user1\\Desktop\\תכנות תשפה\\פרקטיקוד\\ToDoList\\ToDoApi\\ToDoApi.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Downloads\\ToDo List\\ToDoApi\\obj\\",
+      "outputPath": "C:\\Users\\user1\\Desktop\\תכנות תשפה\\פרקטיקוד\\ToDoList\\ToDoApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
