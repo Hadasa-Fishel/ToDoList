@@ -21,11 +21,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseCors("AllowAll");
 
@@ -84,19 +84,7 @@ app.MapDelete("/items/{id:int}", async (int id, ToDoDbContext db) =>
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
+app.MapGet("/", () => "Todo API is running");
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var db = services.GetRequiredService<ToDoDbContext>();
-        db.Database.Migrate();
-    }
-    catch (Exception ex)
-    {
-        // אם יש שגיאה בחיבור או ב-Migration, רצוי לכתוב אותה ל-Log
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while migrating the database.");
-    }
-}app.Run();
+
+app.Run();

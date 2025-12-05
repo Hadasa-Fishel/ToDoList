@@ -1,28 +1,25 @@
-# שלב 1: שלב הבנייה (Builder Stage)
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# העתק קובץ פתרון (Solution) וקובצי פרויקט
-# יש לשנות את הנתיבים בהתאם למבנה שלך: /ToDoList/ToDoApi.csproj
-COPY ToDoList/ToDoApi.sln .
-COPY ToDoList/ToDoApi/*.csproj ToDoList/ToDoApi/
-RUN dotnet restore "ToDoList/ToDoApi/ToDoApi.csproj"
-
-# העתק את שאר קבצי הפרויקט ובנה
-COPY . .
-WORKDIR /src/ToDoList/ToDoApi
-RUN dotnet publish -c Release -o /app/publish
-
-# ----------------------------------------------------------------------------------
-
-# שלב 2: שלב הריצה הסופי (Final Stage)
-# שימוש בתמונת ריצה קטנה ומאובטחת יותר
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
 WORKDIR /app
-COPY --from=build /app/publish .
+EXPOSE 8080
+EXPOSE 8081
 
-# הגדר את פורט ההאזנה (Render משתמש בפורט 80 כברירת מחדל בתוך הקונטיינר)
-ENV ASPNETCORE_URLS=http://+:80
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["ToDoApi.csproj", "."]
+RUN dotnet restore "./ToDoApi.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "./ToDoApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# הפעלת היישום
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./ToDoApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ToDoApi.dll"]
