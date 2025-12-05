@@ -85,4 +85,18 @@ app.MapDelete("/items/{id:int}", async (int id, ToDoDbContext db) =>
     return Results.NoContent();
 });
 
-app.Run();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var db = services.GetRequiredService<ToDoDbContext>();
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // אם יש שגיאה בחיבור או ב-Migration, רצוי לכתוב אותה ל-Log
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
+}app.Run();
