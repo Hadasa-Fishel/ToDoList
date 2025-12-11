@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
- using ToDoApi; 
+using ToDoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +9,10 @@ var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(
         connectionString,
-        ServerVersion.AutoDetect(connectionString)));
+       
+        new MySqlServerVersion(new Version(8, 0, 2))));
 
-// 2. הגדרת CORS - מאפשר גישה מכל מקור (טוב לפיתוח)
+// 2. הגדרת CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -20,29 +21,22 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader());
 });
 
-// 3. הגדרת Swagger לתיעוד ה-API
+// 3. הגדרת Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// הגדרות Pipeline (Middleware)
-
-// הפעלת Swagger - כרגע מוגדר לעבוד תמיד.
-// אם תרצה שזה יעבוד רק בסביבת פיתוח, הסר את ההערה מהתנאי.
-// if (app.Environment.IsDevelopment())
-// {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-// }
+// הגדרות Pipeline
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("AllowAll");
 
-// --- Endpoints / Routes ---
+// --- Endpoints ---
 
 app.MapGet("/", () => "Todo API is running");
 
-// קבלת כל המשימות
 app.MapGet("/items", async (ToDoDbContext db) =>
 {
     try
@@ -51,20 +45,17 @@ app.MapGet("/items", async (ToDoDbContext db) =>
     }
     catch (Exception ex)
     {
-        // מומלץ להשתמש ב-Logger מסודר במקום Console.WriteLine
         Console.WriteLine("Error in GET /items: " + ex);
         return Results.Problem("An error occurred while fetching items.");
     }
 });
 
-// קבלת משימה לפי מזהה
 app.MapGet("/items/{id:int}", async (int id, ToDoDbContext db) =>
 {
     var item = await db.Items.FindAsync(id);
     return item is not null ? Results.Ok(item) : Results.NotFound();
 });
 
-// יצירת משימה חדשה
 app.MapPost("/items", async (Item item, ToDoDbContext db) =>
 {
     db.Items.Add(item);
@@ -72,14 +63,10 @@ app.MapPost("/items", async (Item item, ToDoDbContext db) =>
     return Results.Created($"/items/{item.Id}", item);
 });
 
-// עדכון משימה קיימת
 app.MapPut("/items/{id:int}", async (int id, Item input, ToDoDbContext db) =>
 {
     var item = await db.Items.FindAsync(id);
-    if (item is null)
-    {
-        return Results.NotFound();
-    }
+    if (item is null) return Results.NotFound();
 
     item.Name = input.Name;
     item.IsComplete = input.IsComplete;
@@ -88,20 +75,17 @@ app.MapPut("/items/{id:int}", async (int id, Item input, ToDoDbContext db) =>
     return Results.NoContent();
 });
 
-// מחיקת משימה
 app.MapDelete("/items/{id:int}", async (int id, ToDoDbContext db) =>
 {
     var item = await db.Items.FindAsync(id);
-    if (item is null)
-    {
-        return Results.NotFound();
-    }
+    if (item is null) return Results.NotFound();
 
     db.Items.Remove(item);
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
 
+// יצירת טבלאות אוטומטית בענן
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ToDoDbContext>();
@@ -109,7 +93,3 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
-
-
-
-
