@@ -19,7 +19,7 @@ public partial class ToDoDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            var connectionString = "server=localhost;user=Hadasa;password=0548547616dD!;database=tododb";
+            var connectionString = "server=localhost;user=Hadasa;password=054**********;database=tododb";
             optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
     }

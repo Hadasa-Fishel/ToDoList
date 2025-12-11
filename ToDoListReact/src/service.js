@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-// יצירת instance של axios עם Base URL ל-API שלנו
+// שינוי: קריאת הכתובת מתוך משתנה הסביבה
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:5053',
+  baseURL: apiUrl,
 });
 
 // interceptor לטיפול בשגיאות (לדוגמה 401)
@@ -37,7 +39,7 @@ export default {
     console.log('setCompleted', { id, isCompleted });
     const result = await api.put(`/items/${id}`, {
       id,
-      name: '',
+      name: '', // שימי לב: ייתכן שהשרת דורש את השם המקורי, אם זה יוצר בעיה נצטרך לתקן כאן
       isComplete: isCompleted,
     });
     return result.data;
