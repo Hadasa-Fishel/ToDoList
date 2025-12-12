@@ -3,23 +3,14 @@ using ToDoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// --- התיקון הסופי: קריאה חכמה של מחרוזת החיבור ---
-// 1. קודם מנסים לקחת מהמשתנה הישיר של Render (פותר את הבעיה של שם מסד ריק)
-var connectionString = Environment.GetEnvironmentVariable("RENDER_DB_CONNECTION");
-
-// 2. אם זה ריק (כלומר אנחנו במחשב בבית), לוקחים מהקובץ הרגיל
-if (string.IsNullOrEmpty(connectionString))
-{
-    connectionString = builder.Configuration.GetConnectionString("ToDoDB");
-}
-// ---------------------------------------------------
+var connectionString = "Server=bc4j7gx7f3zjqrv2hhgr-mysql.services.clever-cloud.com;Database=bc4j7gx7f3zjqrv2hhgr;User=u3dokk46ypo2nirc;Password=yAQ4aW5EnL67sFKmQHGJ;";
 
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(
         connectionString,
-        // הגדרה ידנית של הגרסה (פותר את הבעיה של הקריסה 139)
         new MySqlServerVersion(new Version(8, 0, 2))));
 
+// 2. הגדרת CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -28,15 +19,19 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader());
 });
 
+// 3. הגדרת Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// הגדרות Pipeline
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors("AllowAll");
+
+// --- Endpoints ---
 
 app.MapGet("/", () => "Todo API is running");
 
@@ -88,7 +83,7 @@ app.MapDelete("/items/{id:int}", async (int id, ToDoDbContext db) =>
     return Results.NoContent();
 });
 
-// יצירת טבלאות אוטומטית בענן
+
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ToDoDbContext>();
