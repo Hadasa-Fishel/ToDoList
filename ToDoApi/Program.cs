@@ -5,8 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- הכתובת הקבועה (Hardcoded) ---
 // שימי לב: הסרתי רווחים, הוספתי פורט, וסידרתי את הפורמט שיהיה 100% תקין
-var connectionString = "Server=bc4j7gx7f3zjqrv2hhgr-mysql.services.clever-cloud.com;Port=3306;Database=bc4j7gx7f3zjqrv2hhgr;User=u3dokk46ypo2nirc;Password=yAQ4aW5EnL67sFKmQHGJ;";
-
+var connectionString = "Server=bc4j7gx7f3zjqrv2hhgr-mysql.services.clever-cloud.com;Port=3306;Database=bc4j7gx7f3zjqrv2hhgr;User Id=u3dokk46ypo2nirc;Password=yAQ4aW5EnL67sFKmQHGJ;";
 // --- דיבוג: הדפסה ללוג כדי לוודא שהכתובת קיימת ---
 Console.WriteLine("--------------------------------------------------");
 Console.WriteLine($"DEBUG: Connection String Length: {connectionString.Length}");
