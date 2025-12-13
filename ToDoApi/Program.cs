@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- פרטי החיבור (כאן נמצא החשוד המיידי) ---
 // וודאי שוב שזו הסיסמה הנכונה מ-Clever Cloud!
-var connectionString = "Server=bc4j7gx7f3zjqrv2hhgr-mysql.services.clever-cloud.com;Port=3306;Database=bc4j7gx7f3zjqrv2hhgr;Uid=u3dokk46ypo2nirc;Pwd=yAQ4aW5EnL67sFKmQHGJ;";
+var connectionString = "Server=bohp6s0zhjhusturosug-mysql.services.clever-cloud.com;Port=3306;Database=bohp6s0zhjhusturosug;Uid=u0eqxgbmbsqxqkjf;Pwd=t9gk2N2s7rRwGcoald5B;";
 
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 2))));
