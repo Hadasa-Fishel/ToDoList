@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "Z/VnaH5IYRwR45XfLvwmgyiGWhBdlTNbox2trqkwEPA=",
-  "Source": "ToDoApi",
-  "BasePath": "_content/ToDoApi",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"BN5nZX7+05QfjW3RdK1V2HuGVCwEmaMqTNNmOpjv0uY=","Source":"ToDoApi","BasePath":"_content/ToDoApi","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

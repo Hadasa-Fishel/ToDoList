@@ -345,7 +345,6 @@ C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\System.Composition.Hosting.dll
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\System.Composition.TypedParts.dll
-C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -408,11 +407,6 @@ C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\ToDoApi.sourcelink.json
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets\msbuild.ToDoApi.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets\msbuild.build.ToDoApi.props
-C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ToDoApi.props
-C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ToDoApi.props
-C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\scopedcss\bundle\ToDoApi.styles.css
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\ToDoApi.csproj.Up2Date
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\ToDoApi.dll
@@ -420,3 +414,10 @@ C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\ToDoApi.pdb
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\ToDoApi.genruntimeconfig.cache
 C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\ref\ToDoApi.dll
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net8.0\ToDoApi.staticwebassets.endpoints.json
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\user1\Desktop\תכנות תשפה\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
